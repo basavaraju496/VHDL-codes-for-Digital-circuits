@@ -1,0 +1,42 @@
+                                                           TEST BENCH
+library IEEE;
+use IEEE.std_logic_1164.all;
+entity half_adder_tb is
+end half_adder_tb;
+architecture tb of half_adder_tb is
+component half_adder is
+Port ( A,B : in STD_LOGIC;
+Sum, Carry : out STD_LOGIC);
+end component;
+signal A, B, Sum, Carry : STD_LOGIC;
+begin
+uut: half_adder port map(A => A, B => B, Sum => Sum, Carry => Carry);
+stim: process
+begin
+A <= '0';
+B <= '0';
+wait for 20 ns;
+A <= '0';
+B <= '1';
+wait for 20 ns;
+A <= '1';
+B <= '0';
+wait for 20 ns;
+A <= '1';
+B <= '1';
+wait for 20 ns;
+wait;
+end process;
+end tb;
+                                                                DESIGN
+library IEEE;
+use IEEE.std_logic_1164.all;
+entity half_adder is
+port (A, B : in std_logic;
+Sum, Carry : out std_logic);
+end half_adder;
+architecture arch of half_adder is
+begin
+Sum <= A xor B;
+Carry <= A and B;
+end arch;
