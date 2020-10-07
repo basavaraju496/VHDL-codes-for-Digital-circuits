@@ -8,11 +8,10 @@ AEQB, AGTB, ALTB:out std_logic);
 end comparator;
 architecture behavior of comparator is
 begin
-AEQB<=‘1’ when A=B else’0’;
-AGTB<=‘1’ when A>B else’0’;
-ALTB<=‘1’ when A<B else’0’;
+AEQB<='1' when A=B else'0';
+AGTB<='1' when A>B else'0';
+ALTB<='1' when A<B else'0';
 end behavior;
- 
                                                               TEST BENCH 
 
 library IEEE;
@@ -25,9 +24,9 @@ Port(A,B : in std_logic_vector(3 downto 0);
 AGTB,AEQB,ALTB:out std_logic);
 end component;
 signal A,B : std_logic_vector(3 downto 0);
-signal AGTB,AEQB,ALTB:out std_logic;
+signal AGTB,AEQB,ALTB: std_logic;
 begin
-uut: comarator port map(A => A, B => B, AGTB => AGTB, AEQB => AEQB, ALTB => ALTB);
+uut: comparator port map(A => A, B => B, AGTB => AGTB, AEQB => AEQB, ALTB => ALTB);
 stim: process
 begin
 A<="1011";
